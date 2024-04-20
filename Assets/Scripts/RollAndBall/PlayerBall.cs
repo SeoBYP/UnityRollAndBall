@@ -57,6 +57,12 @@ public class PlayerBall : MonoBehaviour
 		float horizontal = Input.GetAxisRaw("Horizontal");
 		float vertical = Input.GetAxisRaw("Vertical");
 
+
+		if(horizontal == 0 && vertical == 0){
+			_rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+			return;
+		}
+
 		// Rigidbody.AddForce 함수는 특정 방향(Vector)으로 
 		// 오브젝트의 힘을 가하는 함수입니다.
 		_rigidbody.AddForce(new Vector3(horizontal, 0, vertical) * _speed, ForceMode.Force);
