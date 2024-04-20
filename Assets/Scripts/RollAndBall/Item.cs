@@ -6,8 +6,7 @@ public class Item : MonoBehaviour
 {
 	[SerializeField] private float rotationSpeed;
 	[SerializeField] private AudioClip clip;
-
-	[SerializeField] private AudioClip clip3;
+	[SerializeField] private int score = 10;
 
 	// Update is called once per frame
 	void Update()
@@ -21,6 +20,7 @@ public class Item : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			AudioSource.PlayClipAtPoint(clip,this.transform.position);
+			GameManager.Instance.AddScore(score);
 			Destroy(gameObject);
 		}
 	}

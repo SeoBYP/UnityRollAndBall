@@ -20,19 +20,31 @@ public class PlayerBall : MonoBehaviour
 	private Rigidbody _rigidbody;
 	private int _jumpCount = 0;
 
-    void Start()
-	{ 
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+	public bool canMove = true;
+
+	void Start()
+	{
+		_rigidbody = GetComponent<Rigidbody>();
+	}
 
 	private void Update()
 	{
+		if (canMove == false)
+		{
+			_rigidbody.velocity = Vector3.zero;
+			return;
+		}
 		Jump();
 	}
 
 	// Update is called once per frame
 	void FixedUpdate()
-    {
+	{
+		if (canMove == false)
+		{
+			_rigidbody.velocity = Vector3.zero;
+			return;
+		}
 		Move();
 	}
 
